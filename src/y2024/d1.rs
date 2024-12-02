@@ -1,20 +1,17 @@
 use std::{
     cmp::{max, min},
     collections::HashMap,
-    fs::OpenOptions,
-    io::{BufRead, BufReader},
     iter::zip,
 };
 
-const INPUT_PATH: &str = "./inputs/day1.txt";
+const INPUT: &str = include_str!("../../inputs/y2024/d1.txt");
 
 fn load_lists() -> (Vec<u32>, Vec<u32>) {
     // * Read lists into two Vec<u32>.
-    let file = OpenOptions::new().read(true).open(INPUT_PATH).unwrap();
-    let mut list1 = Vec::with_capacity(1000);
-    let mut list2 = Vec::with_capacity(1000);
+    let mut list1 = Vec::new();
+    let mut list2 = Vec::new();
 
-    for line in BufReader::new(file).lines().flatten() {
+    for line in INPUT.lines() {
         let num1 = line[0..5].parse::<u32>().unwrap();
         let num2 = line[8..13].parse::<u32>().unwrap();
         list1.push(num1);
