@@ -3,17 +3,17 @@ pub mod y2024;
 
 fn main() {
     println!("Hello, Advent of Code!");
-    // * 2023
-    // println!("Solution to 2023 day 1, part 1 is: {}", y2023::d1::solve_pt1());
-    // println!("Solution to 2023 day 1, part 2 is: {}", y2023::d1::solve_pt2());
-    // println!("Solution to 2023 day 2, part 1 is: {}", y2023::d2::solve_pt1());
-    // println!("Solution to 2023 day 2, part 2 is: {}", y2023::d2::solve_pt2());
-    // println!("Solution to 2023 day 3, part 1 is: {}", y2023::d3::solve_pt1());
-    // println!("Solution to 2023 day 3, part 2 is: {}", y2023::d3::solve_pt2());
+    println!("2023 Solutions");
+    println!("  day 1, part 1: {}", y2023::d1::solve_pt1());
+    println!("  day 1, part 2: {}", y2023::d1::solve_pt2());
+    println!("  day 2, part 1: {}", y2023::d2::solve_pt1());
+    println!("  day 2, part 2: {}", y2023::d2::solve_pt2());
+    println!("  day 3, part 1: {}", y2023::d3::solve_pt1());
+    println!("  day 3, part 2: {}", y2023::d3::solve_pt2());
 
-    // * 2024
-    // println!("Solution to 2024 day 1, part 1 is: {}", y2024::d1::solve_pt1());
-    // println!("Solution to 2024 day 1, part 2 is: {}", y2024::d1::solve_pt2());
-    println!("Solution to 2024 day 2, part 1 is: {}", y2024::d2::solve_pt1());
-    println!("Solution to 2024 day 2, part 2 is: {}", y2024::d2::solve_pt2());
+    println!("2024 Solutions");
+    println!("  day 1, part 1: {}", y2024::d1::solve_pt1());
+    println!("  day 1, part 2: {}", y2024::d1::solve_pt2());
+    println!("  day 2, part 1: {}", y2024::d2::solve_pt1());
+    println!("  day 2, part 2: {}", y2024::d2::solve_pt2());
 }
