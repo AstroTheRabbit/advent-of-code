@@ -8,8 +8,10 @@ fn main() {
 }
 
 fn solve_2023() {
-    println!("Solution to 2023 day 1, part 1 is: {}", y2023::d1::solve_pt1());
-    println!("Solution to 2023 day 1, part 1 is: {}", y2023::d1::solve_pt2());
+    // println!("Solution to 2023 day 1, part 1 is: {}", y2023::d1::solve_pt1());
+    // println!("Solution to 2023 day 1, part 2 is: {}", y2023::d1::solve_pt2());
+    println!("Solution to 2023 day 2, part 1 is: {}", y2023::d2::solve_pt1());
+    println!("Solution to 2023 day 2, part 2 is: {}", y2023::d2::solve_pt2());
 }
 
 fn solve_2024() {
