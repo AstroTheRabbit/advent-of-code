@@ -1,6 +1,7 @@
 use std::ops::Mul;
+use crate::include_input;
 
-const INPUT: &str = include_str!("../../inputs/y2024/d4.txt");
+const INPUT: &str = include_input!("2024", "4");
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 struct Dir {

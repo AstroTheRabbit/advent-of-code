@@ -1,4 +1,6 @@
-const INPUT: &str = include_str!("../../inputs/y2024/d2.txt");
+use crate::include_input;
+
+const INPUT: &str = include_input!("2024", "2");
 
 fn load_reports() -> Vec<Vec<u32>> {
     let mut res = Vec::new();

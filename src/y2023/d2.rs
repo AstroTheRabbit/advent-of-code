@@ -1,4 +1,6 @@
-const INPUT: &str = include_str!("../../inputs/y2023/d2.txt");
+use crate::include_input;
+
+const INPUT: &str = include_input!("2023", "2");
 
 struct Game {
     pub id: u32,

@@ -3,8 +3,9 @@ use std::{
     collections::HashMap,
     iter::zip,
 };
+use crate::include_input;
 
-const INPUT: &str = include_str!("../../inputs/y2024/d1.txt");
+const INPUT: &str = include_input!("2024", "1");
 
 fn load_lists() -> (Vec<u32>, Vec<u32>) {
     // * Read lists into two Vec<u32>.

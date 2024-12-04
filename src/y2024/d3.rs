@@ -1,4 +1,6 @@
-const INPUT: &str = include_str!("../../inputs/y2024/d3.txt");
+use crate::include_input;
+
+const INPUT: &str = include_input!("2024", "3");
 
 pub fn solve_pt1() -> u32 {
     let mut res = 0;

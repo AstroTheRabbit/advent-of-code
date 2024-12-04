@@ -1,4 +1,6 @@
-const INPUT: &str = include_str!("../../inputs/y2023/d1.txt");
+use crate::include_input;
+
+const INPUT: &str = include_input!("2023", "1");
 
 enum LineSearch {
     None,

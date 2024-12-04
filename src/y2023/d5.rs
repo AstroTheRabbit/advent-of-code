@@ -1,4 +1,6 @@
-const INPUT: &str = include_str!("../../inputs/y2023/d5.txt");
+use crate::include_input;
+
+const INPUT: &str = include_input!("2023", "5");
 
 #[derive(Debug)]
 struct Category {

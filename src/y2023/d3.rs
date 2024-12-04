@@ -1,6 +1,7 @@
 use std::{collections::HashMap, ops::RangeInclusive};
+use crate::include_input;
 
-const INPUT: &str = include_str!("../../inputs/y2023/d3.txt");
+const INPUT: &str = include_input!("2023", "3");
 
 struct LineNumber {
     pub num: u32,

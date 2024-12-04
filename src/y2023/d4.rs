@@ -1,6 +1,7 @@
 use std::collections::{HashMap, HashSet};
+use crate::include_input;
 
-const INPUT: &str = include_str!("../../inputs/y2023/d4.txt");
+const INPUT: &str = include_input!("2023", "4");
 
 #[derive(Debug)]
 struct Card {
@@ -75,6 +76,7 @@ pub fn solve_pt1() -> u32 {
 }
 
 pub fn solve_pt2() -> u32 {
+    // TODO: This is kinda slow.
     let cards = load_cards();
 
     let mut res = 0;
