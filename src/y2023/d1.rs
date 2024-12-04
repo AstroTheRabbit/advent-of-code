@@ -41,15 +41,15 @@ pub fn solve_pt1() -> u32 {
 
 pub fn solve_pt2() -> u32 {
     const SPELLED_LOOKUP: [(&str, char); 9] = [
-        ("one",   '1'),
-        ("two",   '2'),
+        ("one", '1'),
+        ("two", '2'),
         ("three", '3'),
-        ("four",  '4'),
-        ("five",  '5'),
-        ("six",   '6'),
+        ("four", '4'),
+        ("five", '5'),
+        ("six", '6'),
         ("seven", '7'),
         ("eight", '8'),
-        ("nine",  '9'),
+        ("nine", '9'),
     ];
 
     let mut res = 0;

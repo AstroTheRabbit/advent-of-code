@@ -14,7 +14,7 @@ pub fn solve_pt1() -> u64 {
         .map(|s| s.parse::<u64>().unwrap());
 
     let mut res = 1;
-    
+
     for (time, dist) in iter::zip(times, distances) {
         let mut count = 0;
         for t in 0..=time {

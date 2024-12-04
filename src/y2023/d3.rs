@@ -70,7 +70,11 @@ pub fn solve_pt1() -> u32 {
 
             if num_finished && num_chars.len() > 0 {
                 let num = num_chars.parse::<u32>().unwrap();
-                numbers.push(LineNumber { num, line_idx, range: num_range });
+                numbers.push(LineNumber {
+                    num,
+                    line_idx,
+                    range: num_range,
+                });
                 num_range = LineRange::None;
                 num_chars.clear();
             }
@@ -78,7 +82,11 @@ pub fn solve_pt1() -> u32 {
 
         if num_chars.len() > 0 {
             let num = num_chars.parse::<u32>().unwrap();
-            numbers.push(LineNumber { num, line_idx, range: num_range });
+            numbers.push(LineNumber {
+                num,
+                line_idx,
+                range: num_range,
+            });
         }
         symbols.push(line_symbols);
     }
@@ -92,7 +100,9 @@ pub fn solve_pt1() -> u32 {
         } else if n.line_idx > 0 && n.range.check_range(&symbols[n.line_idx - 1]).is_some() {
             // * Check the line 'above' this one for symbols next to the number.
             neighbours_symbol = true;
-        } else if n.line_idx < max_line_idx && n.range.check_range(&symbols[n.line_idx + 1]).is_some() {
+        } else if n.line_idx < max_line_idx
+            && n.range.check_range(&symbols[n.line_idx + 1]).is_some()
+        {
             // * Check the line 'below' this one for symbols next to the number.
             neighbours_symbol = true;
         }
@@ -129,14 +139,22 @@ pub fn solve_pt2() -> u32 {
 
             if num_finished && num_chars.len() > 0 {
                 let num = num_chars.parse::<u32>().unwrap();
-                numbers.push(LineNumber { num, line_idx, range: num_range });
+                numbers.push(LineNumber {
+                    num,
+                    line_idx,
+                    range: num_range,
+                });
                 num_range = LineRange::None;
                 num_chars.clear();
             }
         }
         if num_chars.len() > 0 {
             let num = num_chars.parse::<u32>().unwrap();
-            numbers.push(LineNumber { num, line_idx, range: num_range });
+            numbers.push(LineNumber {
+                num,
+                line_idx,
+                range: num_range,
+            });
         }
         gears.push(line_gears);
     }

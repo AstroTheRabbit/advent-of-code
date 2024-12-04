@@ -62,7 +62,7 @@ pub fn solve_pt2() -> u32 {
                 let mut found_seperator = false;
                 let mut finished = false;
                 let mut num_len = 0u32;
-    
+
                 while let Some(c) = chars.pop() {
                     mul_stack.push(c);
                     if c.is_ascii_digit() {
@@ -85,7 +85,7 @@ pub fn solve_pt2() -> u32 {
                         break;
                     }
                 }
-    
+
                 if finished {
                     // * 'mul' instruction was parsed correctly, adding result based on `mul_enabled`...
                     if mul_enabled {
@@ -93,7 +93,6 @@ pub fn solve_pt2() -> u32 {
                         let (num1, num2) = mul_stack.split_once(',').unwrap();
                         res += num1.parse::<u32>().unwrap() * num2.parse::<u32>().unwrap();
                     }
-                    
                 } else {
                     // * 'mul' instruction could not be parsed correctly, returning chars...
                     for c in mul_stack.chars() {

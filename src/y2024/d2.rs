@@ -76,13 +76,13 @@ pub fn solve_pt2() -> u32 {
                 break;
             }
         }
-        
+
         if !passed {
             // * Failed the regular check, now checking if removing a single level can pass.
             for idx in 0..report.len() {
                 let mut report = report.clone();
                 report.remove(idx);
-                
+
                 passed = true;
                 is_increasing = report[1] > report[0];
                 for pair in report.windows(2) {

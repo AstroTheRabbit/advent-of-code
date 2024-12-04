@@ -182,7 +182,11 @@ pub fn solve_pt2() -> u64 {
 
         if !found_map {
             // * This interval was able to pass through this map without being altered.
-            stack.push(Interval::new(interval.start, interval.end, interval.category_idx + 1));
+            stack.push(Interval::new(
+                interval.start,
+                interval.end,
+                interval.category_idx + 1,
+            ));
         }
     }
     return res;

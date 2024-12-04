@@ -9,8 +9,7 @@ struct Card {
     pub winning_numbers: HashSet<u32>,
 }
 
-impl Card {
-}
+impl Card {}
 
 fn load_cards() -> Vec<Card> {
     let mut res = Vec::new();
@@ -21,7 +20,14 @@ fn load_cards() -> Vec<Card> {
         // * `.skip(1)` to skip the 'Card' prefix of each line.
         let mut iter = string.split_whitespace().skip(1);
 
-        let id = iter.next().unwrap().chars().take_while(char::is_ascii_digit).collect::<String>().parse::<u32>().unwrap();
+        let id = iter
+            .next()
+            .unwrap()
+            .chars()
+            .take_while(char::is_ascii_digit)
+            .collect::<String>()
+            .parse::<u32>()
+            .unwrap();
 
         let mut finished_winning_numbers = false;
         let mut numbers = Vec::new();
@@ -39,7 +45,11 @@ fn load_cards() -> Vec<Card> {
                 winning_numbers.insert(num);
             }
         }
-        res.push(Card { id, numbers, winning_numbers });
+        res.push(Card {
+            id,
+            numbers,
+            winning_numbers,
+        });
     }
     return res;
 }
@@ -66,7 +76,7 @@ pub fn solve_pt1() -> u32 {
 
 pub fn solve_pt2() -> u32 {
     let cards = load_cards();
-    
+
     let mut res = 0;
     let mut max_id = 0;
     let mut stack = Vec::new();
