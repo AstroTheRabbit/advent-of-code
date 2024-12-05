@@ -1,5 +1,5 @@
-use std::iter;
 use crate::include_input;
+use std::iter;
 
 const INPUT: &str = include_input!("2023", "6");
 
@@ -32,7 +32,7 @@ pub fn solve_pt1() -> u64 {
 
 pub fn solve_pt2() -> u64 {
     // TODO: This is kinda slow; probably from the `.collect::<String>()` call.
-    
+
     let lines = INPUT.lines().collect::<Vec<_>>();
     let time = lines[0]
         .split_whitespace()

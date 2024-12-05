@@ -1,5 +1,5 @@
-use std::{collections::HashMap, ops::RangeInclusive};
 use crate::include_input;
+use std::{collections::HashMap, ops::RangeInclusive};
 
 const INPUT: &str = include_input!("2023", "3");
 

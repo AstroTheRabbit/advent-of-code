@@ -1,9 +1,9 @@
+use crate::include_input;
 use std::{
     cmp::{max, min},
     collections::HashMap,
     iter::zip,
 };
-use crate::include_input;
 
 const INPUT: &str = include_input!("2024", "1");
 

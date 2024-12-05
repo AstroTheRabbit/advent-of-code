@@ -1,5 +1,5 @@
-use std::ops::Mul;
 use crate::include_input;
+use std::ops::Mul;
 
 const INPUT: &str = include_input!("2024", "4");
 
