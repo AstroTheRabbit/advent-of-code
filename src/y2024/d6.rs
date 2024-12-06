@@ -1,5 +1,8 @@
 use crate::include_input;
-use std::{collections::HashSet, ops::{Add, Sub}};
+use std::{
+    collections::HashSet,
+    ops::{Add, Sub},
+};
 
 const INPUT: &str = include_input!("2024", "6");
 
@@ -11,7 +14,7 @@ struct Pos {
 
 impl Pos {
     pub const fn new(x: i32, y: i32) -> Self {
-        return Self { x, y }
+        return Self { x, y };
     }
 }
 
@@ -84,15 +87,19 @@ impl Map {
                 match c {
                     '#' => {
                         obstacles.insert(pos);
-                    },
+                    }
                     '^' => {
                         guard_start = Some(pos);
-                    },
+                    }
                     _ => continue,
                 }
             }
         }
-        return Self { bounds: Pos::new(bounds_x as i32, bounds_y as i32), guard_start: guard_start.unwrap(), obstacles };
+        return Self {
+            bounds: Pos::new(bounds_x as i32, bounds_y as i32),
+            guard_start: guard_start.unwrap(),
+            obstacles,
+        };
     }
 
     // * Check if a position is within the `bounds` of this map.
