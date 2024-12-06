@@ -33,6 +33,8 @@ fn main() {
     // println!("  day 3, part 2: {}", y2024::d3::solve_pt2());
     // println!("  day 4, part 1: {}", y2024::d4::solve_pt1());
     // println!("  day 4, part 2: {}", y2024::d4::solve_pt2());
-    println!("  day 5, part 1: {}", y2024::d5::solve_pt1());
-    println!("  day 5, part 2: {}", y2024::d5::solve_pt2());
+    // println!("  day 5, part 1: {}", y2024::d5::solve_pt1());
+    // println!("  day 5, part 2: {}", y2024::d5::solve_pt2());
+    println!("  day 6, part 1: {}", y2024::d6::solve_pt1());
+    println!("  day 6, part 2: {}", y2024::d6::solve_pt2());
 }
