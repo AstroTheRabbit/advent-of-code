@@ -77,7 +77,6 @@ pub fn solve_pt1() -> u64 {
                 break;
             }
             // * Current operations are incorrect...
-            // * Getting the next operation combination works similarly to binary counting - find the first `Add`, change it to a `Mul` and everything before it back to an `Add`.
             let mut tested_all = true;
             for i in 0..ops.len() {
                 match ops[i] {
