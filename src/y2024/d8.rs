@@ -77,13 +77,22 @@ pub fn solve_pt1() -> u32 {
 
     for (_, nodes) in &map.nodes {
         for i in 0..nodes.len() {
-            for j in 0..nodes.len() {
-                if i == j {
-                    continue;
-                }
+            for j in (i + 1)..nodes.len() {
                 let antinode = nodes[i] + nodes[i] - nodes[j];
                 if map.in_bounds(&antinode) {
                     antinodes.insert(antinode);
+                }
+
+                let antinode = nodes[j] + nodes[j] - nodes[i];
+                if map.in_bounds(&antinode) {
+                    antinodes.insert(antinode);
+                }
+            }
+        }
+        for i in 0..nodes.len() {
+            for j in 0..nodes.len() {
+                if i == j {
+                    continue;
                 }
             }
         }
@@ -97,12 +106,16 @@ pub fn solve_pt2() -> u32 {
 
     for (_, nodes) in &map.nodes {
         for i in 0..nodes.len() {
-            for j in 0..nodes.len() {
-                if i == j {
-                    continue;
-                }
+            for j in (i + 1)..nodes.len() {
                 let mut pos = nodes[i];
                 let d = nodes[j] - pos;
+                while map.in_bounds(&pos) {
+                    antinodes.insert(pos);
+                    pos += d;
+                }
+
+                let mut pos = nodes[j];
+                let d = nodes[i] - pos;
                 while map.in_bounds(&pos) {
                     antinodes.insert(pos);
                     pos += d;
