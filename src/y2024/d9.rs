@@ -84,7 +84,6 @@ pub fn solve_pt2() -> u64 {
 
     let mut prev_id = u64::MAX;
     for file_idx in (0..spans.len()).rev() {
-        println!("{} / {}", file_idx, spans.len());
         let file_id = match spans[file_idx].file_id {
             Some(id) if id < prev_id => id,
             _ => continue,
