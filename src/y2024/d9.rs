@@ -12,11 +12,17 @@ struct BlockSpan {
 
 impl BlockSpan {
     pub fn new_empty(length: usize) -> Self {
-        Self { length, file_id: None }
+        Self {
+            length,
+            file_id: None,
+        }
     }
 
     pub fn new_file(length: usize, file_id: u64) -> Self {
-        Self { length, file_id: Some(file_id) }
+        Self {
+            length,
+            file_id: Some(file_id),
+        }
     }
 
     pub fn load() -> Vec<Self> {
@@ -30,12 +36,12 @@ impl BlockSpan {
                 true => {
                     spans.push(Self::new_empty(len));
                     is_free_space = false;
-                },
+                }
                 false => {
                     spans.push(Self::new_file(len, file_id));
                     file_id += 1;
                     is_free_space = true;
-                },
+                }
             }
         }
         return spans;
@@ -47,7 +53,10 @@ impl BlockSpan {
 }
 
 pub fn solve_pt1() -> u64 {
-    let mut blocks = BlockSpan::load().into_iter().flat_map(BlockSpan::expand).collect::<Vec<_>>();
+    let mut blocks = BlockSpan::load()
+        .into_iter()
+        .flat_map(BlockSpan::expand)
+        .collect::<Vec<_>>();
 
     let len = blocks.len();
     let mut last_full_idx = len - 1;
@@ -106,11 +115,15 @@ pub fn solve_pt2() -> u64 {
             break;
         }
     }
-    
-    let iter = spans.into_iter().flat_map(BlockSpan::expand).enumerate().filter_map(|(b, f)| match f {
-        Some(f) => Some((b, f)),
-        None => None,
-    });
+
+    let iter = spans
+        .into_iter()
+        .flat_map(BlockSpan::expand)
+        .enumerate()
+        .filter_map(|(b, f)| match f {
+            Some(f) => Some((b, f)),
+            None => None,
+        });
 
     let mut res = 0;
     for (block_idx, file_id) in iter {
