@@ -47,6 +47,6 @@ fn main() {
     // println!("  day 10, part 2: {}", y2024::d10::solve_pt2());
     // println!("  day 11, part 1: {}", y2024::d11::solve_pt1());
     // println!("  day 11, part 2: {}", y2024::d11::solve_pt2());
-    println!("  day 12, part 1: {}", y2024::d12::solve_pt1());
-    println!("  day 12, part 2: {}", y2024::d12::solve_pt2());
+    // println!("  day 12, part 1: {}", y2024::d12::solve_pt1());
+    // println!("  day 12, part 2: {}", y2024::d12::solve_pt2());
 }
