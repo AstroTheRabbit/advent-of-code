@@ -44,41 +44,34 @@ impl Sub for Pos {
     }
 }
 
-struct Map {
-    pub plants: HashMap<Pos, char>,
-}
-
-impl Map {
-    pub fn load() -> Self {
-        let mut plants = HashMap::new();
-        for (y, line) in INPUT.lines().enumerate() {
-            for (x, c) in line.char_indices() {
-                let pos = Pos::new(x as isize, y as isize);
-                plants.insert(pos, c);
-            }
+fn load_plants() -> HashMap<Pos, char> {
+    let mut plants = HashMap::new();
+    for (y, line) in INPUT.lines().enumerate() {
+        for (x, c) in line.char_indices() {
+            let pos = Pos::new(x as isize, y as isize);
+            plants.insert(pos, c);
         }
-        return Self { plants };
     }
+    return plants;
 }
 
 pub fn solve_pt1() -> u32 {
-    let mut map = Map::load();
+    let mut plants = load_plants();
     let mut res = 0;
     let mut stack = Vec::new();
     let mut region = HashSet::new();
 
-    while let Some((&start_pos, &region_plant)) = map.plants.iter().next() {
+    while let Some((&start_pos, &region_plant)) = plants.iter().next() {
         let mut perimeter = 0;
         stack.clear();
         region.clear();
         stack.push(start_pos);
         
         while let Some(pos) = stack.pop() {
-            if !region.contains(&pos) {
-                region.insert(pos);
+            if region.insert(pos) {
                 for dir in Pos::ALL_DIRS {
                     let next = pos + dir;
-                    if map.plants.get(&next).is_none_or(|&c| c != region_plant) {
+                    if plants.get(&next).is_none_or(|&c| c != region_plant) {
                         // * `next` is not within the current region.
                         perimeter += 1;
                     } else {
@@ -91,31 +84,30 @@ pub fn solve_pt1() -> u32 {
         res += region.len() * perimeter;
 
         for p in &region {
-            map.plants.remove(p);
+            plants.remove(p);
         }
     }
     return res as u32;
 }
 
 pub fn solve_pt2() -> u32 {
-	let mut map = Map::load();
+	let mut plants = load_plants();
     let mut res = 0;
     let mut stack = Vec::new();
     let mut region = HashSet::new();
     let mut perimeter = HashSet::new();
 
-    while let Some((&start_pos, &region_plant)) = map.plants.iter().next() {
+    while let Some((&start_pos, &region_plant)) = plants.iter().next() {
         stack.clear();
         region.clear();
         perimeter.clear();
         stack.push(start_pos);
         
         while let Some(pos) = stack.pop() {
-            if !region.contains(&pos) {
-                region.insert(pos);
+            if region.insert(pos) {
                 for dir in Pos::ALL_DIRS {
                     let next = pos + dir;
-                    if map.plants.get(&next).is_none_or(|&c| c != region_plant) {
+                    if plants.get(&next).is_none_or(|&c| c != region_plant) {
                         // * `next` is not within the current region.
                         perimeter.insert((pos, next));
                     } else {
@@ -160,7 +152,7 @@ pub fn solve_pt2() -> u32 {
         res += region.len() * sides;
 
         for p in &region {
-            map.plants.remove(p);
+            plants.remove(p);
         }
     }
     return res as u32;
