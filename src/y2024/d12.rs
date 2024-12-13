@@ -63,7 +63,6 @@ pub fn solve_pt1() -> u32 {
 
     while let Some((&start_pos, &region_plant)) = plants.iter().next() {
         let mut perimeter = 0;
-        stack.clear();
         region.clear();
         stack.push(start_pos);
         
@@ -98,9 +97,8 @@ pub fn solve_pt2() -> u32 {
     let mut perimeter = HashSet::new();
 
     while let Some((&start_pos, &region_plant)) = plants.iter().next() {
-        stack.clear();
-        region.clear();
         perimeter.clear();
+        region.clear();
         stack.push(start_pos);
         
         while let Some(pos) = stack.pop() {
