@@ -9,10 +9,10 @@ fn add_or_insert(map: &mut HashMap<u64, u64>, key: u64, count: u64) {
     match map.get_mut(&key) {
         Some(value) => {
             *value += count;
-        },
+        }
         None => {
             map.insert(key, count);
-        },
+        }
     }
 }
 

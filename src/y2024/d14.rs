@@ -1,6 +1,10 @@
-use std::{cmp::Ordering, collections::HashSet, io::stdin, ops::{Add, Mul, Sub}};
-
 use crate::include_input;
+use std::{
+    cmp::Ordering,
+    collections::HashSet,
+    io::stdin,
+    ops::{Add, Mul, Sub},
+};
 
 const INPUT: &str = include_input!("2024", "14");
 
@@ -55,7 +59,11 @@ struct Robot {
 
 impl Robot {
     fn read_num(chars: &mut impl Iterator<Item = char>) -> isize {
-        return chars.take_while(|c| c.is_ascii_digit() || *c == '-').collect::<String>().parse().unwrap();
+        return chars
+            .take_while(|c| c.is_ascii_digit() || *c == '-')
+            .collect::<String>()
+            .parse()
+            .unwrap();
     }
 
     pub fn load() -> Vec<Robot> {
@@ -70,7 +78,10 @@ impl Robot {
             let mut chars = chars.skip(2);
             let vx = Self::read_num(&mut chars);
             let vy = Self::read_num(&mut chars);
-            res.push(Self { pos: Pos::new(px, py), vel: Pos::new(vx, vy) });
+            res.push(Self {
+                pos: Pos::new(px, py),
+                vel: Pos::new(vx, vy),
+            });
         }
         return res;
     }
@@ -103,7 +114,10 @@ pub fn solve_pt1() -> u32 {
         final_pos.y = pos_mod(final_pos.y, BOUNDS.y);
         robot.pos = final_pos;
 
-        match (Ord::cmp(&final_pos.x, &HALF.x), Ord::cmp(&final_pos.y, &HALF.y)) {
+        match (
+            Ord::cmp(&final_pos.x, &HALF.x),
+            Ord::cmp(&final_pos.y, &HALF.y),
+        ) {
             // * `final_pos` is in one of the four quadrants.
             (Ordering::Less, Ordering::Less) => count_1 += 1,
             (Ordering::Less, Ordering::Greater) => count_2 += 1,
@@ -178,9 +192,11 @@ pub fn solve_pt2() -> u32 {
 
         let mut user_input = String::new();
         match stdin().read_line(&mut user_input) {
-            Ok(count) => if count > 1 {
-                return time;
-            },
+            Ok(count) => {
+                if count > 1 {
+                    return time;
+                }
+            }
             Err(_) => panic!("Error trying to read from stdin!"),
         }
     }

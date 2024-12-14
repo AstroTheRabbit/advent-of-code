@@ -1,6 +1,8 @@
-use std::{collections::{HashMap, HashSet}, ops::{Add, Sub}};
-
 use crate::include_input;
+use std::{
+    collections::{HashMap, HashSet},
+    ops::{Add, Sub},
+};
 
 const INPUT: &str = include_input!("2024", "12");
 
@@ -65,7 +67,7 @@ pub fn solve_pt1() -> u32 {
         let mut perimeter = 0;
         region.clear();
         stack.push(start_pos);
-        
+
         while let Some(pos) = stack.pop() {
             if region.insert(pos) {
                 for dir in Pos::ALL_DIRS {
@@ -90,7 +92,7 @@ pub fn solve_pt1() -> u32 {
 }
 
 pub fn solve_pt2() -> u32 {
-	let mut plants = load_plants();
+    let mut plants = load_plants();
     let mut res = 0;
     let mut stack = Vec::new();
     let mut region = HashSet::new();
@@ -100,7 +102,7 @@ pub fn solve_pt2() -> u32 {
         perimeter.clear();
         region.clear();
         stack.push(start_pos);
-        
+
         while let Some(pos) = stack.pop() {
             if region.insert(pos) {
                 for dir in Pos::ALL_DIRS {

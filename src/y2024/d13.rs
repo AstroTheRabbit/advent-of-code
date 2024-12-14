@@ -1,6 +1,5 @@
-use std::ops::{Add, Mul, Sub};
-
 use crate::include_input;
+use std::ops::{Add, Mul, Sub};
 
 const INPUT: &str = include_input!("2024", "13");
 
@@ -52,7 +51,11 @@ struct Machine {
 
 impl Machine {
     fn read_num(chars: &mut impl Iterator<Item = char>) -> u64 {
-        return chars.take_while(char::is_ascii_digit).collect::<String>().parse().unwrap();
+        return chars
+            .take_while(char::is_ascii_digit)
+            .collect::<String>()
+            .parse()
+            .unwrap();
     }
 
     pub fn load() -> Vec<Self> {
@@ -77,8 +80,12 @@ impl Machine {
             // * Skip " Y=", read `py`.
             let mut chars = chars.by_ref().skip(3);
             let py = Self::read_num(&mut chars);
-            
-            res.push(Machine { button_a: Pos::new(ax, ay), button_b: Pos::new(bx, by), prize: Pos::new(px, py) });
+
+            res.push(Machine {
+                button_a: Pos::new(ax, ay),
+                button_b: Pos::new(bx, by),
+                prize: Pos::new(px, py),
+            });
         }
         return res;
     }
@@ -97,7 +104,7 @@ pub fn solve_pt1() -> u64 {
         let a = machine.button_a;
         let b = machine.button_b;
         let p = machine.prize;
-        
+
         let d = u64::abs_diff(a.x * b.y, a.y * b.x);
         let na = u64::abs_diff(p.x * b.y, p.y * b.x);
         let nb = u64::abs_diff(p.y * a.x, p.x * a.y);
