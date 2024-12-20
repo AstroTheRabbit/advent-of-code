@@ -60,5 +60,9 @@ fn main() {
     // println!("  day 17, part 1: {}", y2024::d17::solve_pt1());
     // println!("  day 17, part 2: {}", y2024::d17::solve_pt2()); // TODO
     // println!("  day 18, part 1: {}", y2024::d18::solve_pt1());
-    // println!("  day 18, part 2: {}", y2024::d18::solve_pt2()); // ! Slow
+    // // println!("  day 18, part 2: {}", y2024::d18::solve_pt2()); // ! Slow
+    // println!("  day 19, part 1: {}", y2024::d19::solve_pt1()); // TODO
+    // println!("  day 19, part 2: {}", y2024::d19::solve_pt2()); // TODO
+    // // println!("  day 20, part 1: {}", y2024::d20::solve_pt1()); // ! Slow
+    // // println!("  day 20, part 2: {}", y2024::d20::solve_pt2()); // ! Slow
 }
