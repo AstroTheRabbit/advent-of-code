@@ -65,4 +65,6 @@ fn main() {
     // println!("  day 19, part 2: {}", y2024::d19::solve_pt2()); // TODO
     // // println!("  day 20, part 1: {}", y2024::d20::solve_pt1()); // ! Slow
     // // println!("  day 20, part 2: {}", y2024::d20::solve_pt2()); // ! Slow
+    println!("  day 22, part 1: {}", y2024::d22::solve_pt1());
+    println!("  day 22, part 2: {}", y2024::d22::solve_pt2());
 }
