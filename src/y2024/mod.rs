@@ -18,3 +18,4 @@ pub mod d18;
 pub mod d20;
 pub mod d22;
 pub mod d23;
+pub mod d24;
