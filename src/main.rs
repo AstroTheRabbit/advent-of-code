@@ -1,5 +1,6 @@
 pub mod y2023;
 pub mod y2024;
+pub mod y2025;
 
 #[macro_export]
 macro_rules! include_input {
@@ -10,6 +11,12 @@ macro_rules! include_input {
 
 fn main() {
     println!("Hello, Advent of Code!");
+    y2023();
+    y2024();
+    y2025();
+}
+
+fn y2023() {
     // println!("2023 Solutions");
     // println!("  day 1, part 1: {}", y2023::d1::solve_pt1());
     // println!("  day 1, part 2: {}", y2023::d1::solve_pt2());
@@ -23,7 +30,9 @@ fn main() {
     // println!("  day 5, part 2: {}", y2023::d5::solve_pt2());
     // println!("  day 6, part 1: {}", y2023::d6::solve_pt1());
     // println!("  day 6, part 2: {}", y2023::d6::solve_pt2());
+}
 
+fn y2024() {
     // println!("2024 Solutions");
     // println!("  day 1, part 1: {}", y2024::d1::solve_pt1());
     // println!("  day 1, part 2: {}", y2024::d1::solve_pt2());
@@ -71,4 +80,10 @@ fn main() {
     // println!("  day 23, part 2: {}", y2024::d23::solve_pt2());
     // println!("  day 24, part 1: {}", y2024::d24::solve_pt1());
     // println!("  day 24, part 2: {}", y2024::d24::solve_pt2()); // TODO
+}
+
+fn y2025() {
+    println!("2025 Solutions");
+    println!("  day 1, part 1: {}", y2025::d1::solve_pt1());
+    println!("  day 1, part 2: {}", y2025::d1::solve_pt2());
 }
