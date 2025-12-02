@@ -2,7 +2,6 @@ use crate::include_input;
 use std::{
     cmp::Ordering,
     collections::HashSet,
-    io::stdin,
     ops::{Add, Mul, Sub},
 };
 
@@ -151,7 +150,8 @@ pub fn solve_pt2() -> u32 {
             positions.insert(next_pos);
         }
 
-        // * Search for 'blobs' (using flood fill) larger than some arbitary value (10) to skip random states (This question *really* annoys me).
+        // * Search for 'blobs' (using flood fill) larger than some arbitary value to skip random states (This question *really* annoys me).
+
         let mut max_blob = 0;
         let mut stack = Vec::new();
         while let Some(start_pos) = positions.iter().next().cloned() {
@@ -172,33 +172,37 @@ pub fn solve_pt2() -> u32 {
             }
         }
         if max_blob < 25 {
-            println!("Skipping t = {}...", time);
+            // println!("Skipping t = {}...", time);
             continue;
         }
 
+        return time;
+        
+        // ? Used for scanning; no longer needed after solution is found.
         // * Print robot positions to terminal.
-        for y in 0..BOUNDS.y {
-            for x in 0..BOUNDS.x {
-                let pos = Pos::new(x, y);
-                if checked_positions.contains(&pos) {
-                    print!("█");
-                } else {
-                    print!(" ");
-                }
-            }
-            println!();
-        }
-        println!("Is this a tree? (t = {})", time);
+        // for y in 0..BOUNDS.y {
+        //     for x in 0..BOUNDS.x {
+        //         let pos = Pos::new(x, y);
+        //         if checked_positions.contains(&pos) {
+        //             print!("█");
+        //         } else {
+        //             print!(" ");
+        //         }
+        //     }
+        //     println!();
+        // }
+        // println!("Is this a tree? (t = {})", time);
 
-        let mut user_input = String::new();
-        match stdin().read_line(&mut user_input) {
-            Ok(count) => {
-                if count > 1 {
-                    return time;
-                }
-            }
-            Err(_) => panic!("Error trying to read from stdin!"),
-        }
+        // * Ask user if robots form a tree.
+        // let mut user_input = String::new();
+        // match std::io::stdin().read_line(&mut user_input) {
+        //     Ok(count) => {
+        //         if count > 1 {
+        //             return time;
+        //         }
+        //     }
+        //     Err(_) => panic!("Error trying to read from stdin!"),
+        // }
     }
     panic!("No correct state found after {} steps!", u32::MAX);
 }
