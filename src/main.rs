@@ -72,8 +72,8 @@ fn y2024() {
     // println!("  day 17, part 2: {}", y2024::d17::solve_pt2()); // TODO
     println!("  day 18, part 1: {}", y2024::d18::solve_pt1());
     println!("  day 18, part 2: {}", y2024::d18::solve_pt2()); // ! Slow
-    // println!("  day 19, part 1: {}", y2024::d19::solve_pt1()); // TODO
-    // println!("  day 19, part 2: {}", y2024::d19::solve_pt2()); // TODO
+                                                               // println!("  day 19, part 1: {}", y2024::d19::solve_pt1()); // TODO
+                                                               // println!("  day 19, part 2: {}", y2024::d19::solve_pt2()); // TODO
     println!("  day 20, part 1: {}", y2024::d20::solve_pt1()); // ! Slow
     println!("  day 20, part 2: {}", y2024::d20::solve_pt2()); // ! Slow
     println!("  day 22, part 1: {}", y2024::d22::solve_pt1());
@@ -94,6 +94,8 @@ fn y2025() {
     // println!("  day 3, part 2: {}", y2025::d3::solve_pt2());
     // println!("  day 4, part 1: {}", y2025::d4::solve_pt1());
     // println!("  day 4, part 2: {}", y2025::d4::solve_pt2());
-    println!("  day 5, part 1: {}", y2025::d5::solve_pt1());
-    println!("  day 5, part 2: {}", y2025::d5::solve_pt2());
+    // println!("  day 5, part 1: {}", y2025::d5::solve_pt1());
+    // println!("  day 5, part 2: {}", y2025::d5::solve_pt2());
+    println!("  day 6, part 1: {}", y2025::d6::solve_pt1());
+    println!("  day 6, part 2: {}", y2025::d6::solve_pt2());
 }

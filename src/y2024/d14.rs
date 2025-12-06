@@ -177,7 +177,7 @@ pub fn solve_pt2() -> u32 {
         }
 
         return time;
-        
+
         // ? Used for scanning; no longer needed after solution is found.
         // * Print robot positions to terminal.
         // for y in 0..BOUNDS.y {

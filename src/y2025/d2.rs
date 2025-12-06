@@ -8,7 +8,7 @@ fn load_ranges() -> Vec<RangeInclusive<u64>> {
     return INPUT
         .split(',')
         .filter_map(|r| r.split_once('-'))
-        .map(|(l,u)| l.parse().unwrap()..=u.parse().unwrap())
+        .map(|(l, u)| l.parse().unwrap()..=u.parse().unwrap())
         .collect();
 }
 
@@ -30,7 +30,7 @@ pub fn solve_pt1() -> u64 {
 }
 
 pub fn solve_pt2() -> u64 {
-	let ranges = load_ranges();
+    let ranges = load_ranges();
     let mut sum = 0;
 
     for range in ranges {

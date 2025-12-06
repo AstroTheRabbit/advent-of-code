@@ -36,7 +36,7 @@ pub fn solve_pt1() -> u32 {
 }
 
 pub fn solve_pt2() -> u64 {
-	let (mut ranges, _) = load_input();
+    let (mut ranges, _) = load_input();
     let mut found_merge = true;
 
     'M: while found_merge {
@@ -58,13 +58,14 @@ pub fn solve_pt2() -> u64 {
                     found_merge = true;
                     let start = u64::min(*sa, *sb);
                     let end = u64::max(*ea, *eb);
-                    ranges.remove(i);
-                    ranges.remove( j - 1);
-                    ranges.push(start..=end);
+                    let merged = start..=end;
+                    // * Replace `b` with `merged`, remove `a`.
+                    ranges[j] = merged;
+                    ranges.swap_remove(i);
                     continue 'M;
                 }
             }
         }
     }
-    return ranges.into_iter().flatten().count().try_into().unwrap();
+    return ranges.into_iter().flatten().count() as u64;
 }

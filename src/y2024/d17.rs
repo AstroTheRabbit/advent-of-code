@@ -38,7 +38,13 @@ impl Computer {
         while let Ok(n) = Self::read_num(&mut chars) {
             program.push(n as u8);
         }
-        return Self { program, ip: 0, reg_a, reg_b, reg_c };
+        return Self {
+            program,
+            ip: 0,
+            reg_a,
+            reg_b,
+            reg_c,
+        };
     }
 
     #[inline]
@@ -65,46 +71,46 @@ impl Computer {
                 let comb = self.combo(operand);
                 self.reg_a /= 2u64.pow(comb as u32);
                 return None;
-            },
+            }
             // * reg_b XOR op => reg_b
             Instruction::Bxl => {
                 self.reg_b ^= operand as u64;
                 return None;
-            },
+            }
             // * comb(op) % 8 => reg_b
             Instruction::Bst => {
                 self.reg_b = self.combo(operand) % 8;
                 return None;
-            },
+            }
             // * reg_a != 0 ? op => ip
             Instruction::Jnz => {
                 if self.reg_a != 0 {
                     self.ip = operand as usize;
                 }
                 return None;
-            },
+            }
             // * reg_b XOR reg_c => reg_b
             Instruction::Bxc => {
                 self.reg_b ^= self.reg_c;
                 return None;
-            },
+            }
             // * comb(op) % 8 => out
             Instruction::Out => {
-                let comb = self.combo(operand)  % 8 ;
+                let comb = self.combo(operand) % 8;
                 return Some(comb as u8);
-            },
+            }
             // * reg_a / (2 ^ comb(op)) => reg_b
             Instruction::Bdv => {
                 let comb = self.combo(operand);
                 self.reg_b = self.reg_a / 2u64.pow(comb as u32);
                 return None;
-            },
+            }
             // * reg_a / (2 ^ comb(op)) => reg_c
             Instruction::Cdv => {
                 let comb = self.combo(operand);
                 self.reg_c = self.reg_a / 2u64.pow(comb as u32);
                 return None;
-            },
+            }
         }
     }
 }

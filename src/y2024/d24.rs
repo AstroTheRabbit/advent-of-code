@@ -1,4 +1,7 @@
-use std::{array, collections::{HashMap, VecDeque}};
+use std::{
+    array,
+    collections::{HashMap, VecDeque},
+};
 
 use crate::include_input;
 
@@ -31,19 +34,27 @@ struct Gate {
 
 impl Gate {
     pub const fn new(in1: [char; 3], in2: [char; 3], op: Operator, out: [char; 3]) -> Self {
-        Self { in1: Wire { label: in1 }, in2: Wire { label: in2 }, op, out: Wire { label: out } }
+        Self {
+            in1: Wire { label: in1 },
+            in2: Wire { label: in2 },
+            op,
+            out: Wire { label: out },
+        }
     }
 }
 
 impl PartialEq for Gate {
     fn eq(&self, other: &Self) -> bool {
-        ((self.in1 == other.in1 && self.in2 == other.in2) || (self.in1 == other.in2 && self.in2 == other.in1)) && self.op == other.op && self.out == other.out
+        ((self.in1 == other.in1 && self.in2 == other.in2)
+            || (self.in1 == other.in2 && self.in2 == other.in1))
+            && self.op == other.op
+            && self.out == other.out
     }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 struct Wire {
-    pub label: [char; 3]
+    pub label: [char; 3],
 }
 
 fn load_inputs() -> (HashMap<Wire, bool>, Vec<Gate>) {
@@ -117,7 +128,10 @@ pub fn solve_pt1() -> u64 {
         }
     }
 
-    let mut bits = wires.into_iter().filter(|(w, _)| w.label[0] == 'z').collect::<Vec<_>>();
+    let mut bits = wires
+        .into_iter()
+        .filter(|(w, _)| w.label[0] == 'z')
+        .collect::<Vec<_>>();
     bits.sort_by_cached_key(|(w, _)| w.label);
 
     let mut res = 0;

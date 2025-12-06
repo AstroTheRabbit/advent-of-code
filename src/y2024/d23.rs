@@ -30,7 +30,8 @@ impl Computer {
 pub fn solve_pt1() -> u32 {
     let connections = Computer::load_connections();
     // * `connected_to` stores a list of every computer along with its 'primary' connections (i.e. each connection in the provided input).
-    let mut connected_to: HashMap<Computer, HashSet<Computer>> = HashMap::with_capacity(connections.len());
+    let mut connected_to: HashMap<Computer, HashSet<Computer>> =
+        HashMap::with_capacity(connections.len());
 
     for (a, b) in connections {
         if let Some(group_a) = connected_to.get_mut(&a) {
@@ -61,13 +62,7 @@ pub fn solve_pt1() -> u32 {
                 if !conn_a.contains(&c) || !conn_b.contains(&c) {
                     continue;
                 }
-                let variants = [
-                    [a, c, b],
-                    [b, a, c],
-                    [b, c, a],
-                    [c, a, b],
-                    [c, b, a],
-                ];
+                let variants = [[a, c, b], [b, a, c], [b, c, a], [c, a, b], [c, b, a]];
                 if !variants.into_iter().any(|v| triplets.contains(&v)) {
                     triplets.insert(triplet);
                 }
@@ -75,13 +70,13 @@ pub fn solve_pt1() -> u32 {
         }
     }
     return triplets.len() as u32;
-
 }
 
 pub fn solve_pt2() -> String {
     let connections = Computer::load_connections();
     // * `connected_to` stores a list of every computer along with its 'primary' connections (i.e. each connection in the provided input).
-    let mut connected_to: HashMap<Computer, HashSet<Computer>> = HashMap::with_capacity(connections.len());
+    let mut connected_to: HashMap<Computer, HashSet<Computer>> =
+        HashMap::with_capacity(connections.len());
 
     for (a, b) in connections {
         if let Some(group_a) = connected_to.get_mut(&a) {
@@ -105,7 +100,11 @@ pub fn solve_pt2() -> String {
         stack.clear();
         stack.push(start);
         while let Some(from) = stack.pop() {
-            if group.contains_key(&from) || group.values().any(|conn: &&HashSet<_>| !conn.contains(&from)) {
+            if group.contains_key(&from)
+                || group
+                    .values()
+                    .any(|conn: &&HashSet<_>| !conn.contains(&from))
+            {
                 continue;
             }
             let connections = &connected_to[&from];
@@ -116,7 +115,10 @@ pub fn solve_pt2() -> String {
         }
         if group.len() > largest {
             largest = group.len();
-            let mut names = group.keys().map(|c| format!("{}{}", c.first, c.second)).collect::<Vec<_>>();
+            let mut names = group
+                .keys()
+                .map(|c| format!("{}{}", c.first, c.second))
+                .collect::<Vec<_>>();
             names.sort();
             password = names.join(",");
         }

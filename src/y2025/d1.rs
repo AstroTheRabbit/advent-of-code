@@ -17,7 +17,7 @@ impl Dial {
             c => panic!("Unexpected character '{}' in input!", c),
         };
     }
-    
+
     pub fn apply_rot(&mut self, rot: i32) -> u32 {
         let mut count = 0;
         let dir = rot.signum();
@@ -52,7 +52,7 @@ pub fn solve_pt1() -> u32 {
 }
 
 pub fn solve_pt2() -> u32 {
-	let mut count = 0;
+    let mut count = 0;
     let mut dial = Dial(50);
 
     for l in INPUT.lines() {

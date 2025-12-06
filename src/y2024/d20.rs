@@ -1,4 +1,7 @@
-use std::{collections::{HashMap, HashSet}, ops::{Add, Mul, Sub}};
+use std::{
+    collections::{HashMap, HashSet},
+    ops::{Add, Mul, Sub},
+};
 
 use crate::include_input;
 
@@ -73,19 +76,24 @@ impl Map {
                 match c {
                     '#' => {
                         walls.insert(pos);
-                    },
+                    }
                     'S' => {
                         start_pos = pos;
-                    },
+                    }
                     'E' => {
                         end_pos = pos;
-                    },
-                    '.' => {},
+                    }
+                    '.' => {}
                     _ => panic!("Invalid map input!"),
                 }
             }
         }
-        return Self { start_pos, end_pos, bounds, walls };
+        return Self {
+            start_pos,
+            end_pos,
+            bounds,
+            walls,
+        };
     }
 }
 
@@ -109,10 +117,10 @@ pub fn solve_pt1() -> u32 {
                     // * `pos` has already been visited with a quicker `time`.
                     continue;
                 }
-            },
+            }
             None => {
                 times.insert(pos, time);
-            },
+            }
         }
         if pos == map.end_pos {
             continue;
@@ -121,7 +129,7 @@ pub fn solve_pt1() -> u32 {
             stack.push((pos + dir, time + 1u32));
         }
     }
-    
+
     // * We now subtract each position's local time from the best (non-cheated) time at the end postion,
     // * removing any negative times (since a negative time would mean that it takes more time than the non-cheated path to get to the end).
     let mut inv_times = HashMap::new();
@@ -131,7 +139,7 @@ pub fn solve_pt1() -> u32 {
             inv_times.insert(pos, inv_time);
         }
     }
-    
+
     // * We now look for pairs of positions that have the correct gap and result in a `delta_time` that is >= 100.
     // * Since a gap with no walls between the positions (i.e. a 'regular' path) will only have a `delta_time` of at most 2,
     // * we don't have to explicitly check for a wall between the positions.
@@ -140,7 +148,7 @@ pub fn solve_pt1() -> u32 {
 
     let gaps: HashSet<Pos> = Pos::ALL_DIRS.into_iter().map(|d| 2 * d).collect();
     let mut res = 0;
-    
+
     for (&start_pos, &start_time) in &inv_times {
         for (&end_pos, &end_time) in &inv_times {
             // * -2 for the time taking moving through the removed wall.
@@ -175,10 +183,10 @@ pub fn solve_pt2() -> u32 {
                     // * `pos` has already been visited with a quicker `time`.
                     continue;
                 }
-            },
+            }
             None => {
                 times.insert(pos, time);
-            },
+            }
         }
         if pos == map.end_pos {
             continue;
@@ -187,7 +195,7 @@ pub fn solve_pt2() -> u32 {
             stack.push((pos + dir, time + 1u32));
         }
     }
-    
+
     // * We now subtract each position's local time from the best (non-cheated) time at the end postion,
     // * removing any negative times (since a negative time would mean that it takes more time than the non-cheated path to get to the end).
     let mut inv_times = HashMap::new();
@@ -197,7 +205,7 @@ pub fn solve_pt2() -> u32 {
             inv_times.insert(pos, inv_time);
         }
     }
-    
+
     // * We now look for pairs of positions that have the correct gap and result in a `delta_time` that is >= 100.
     // * Instead of part 1's 'gap' definition, we'll just use the 'taxicab' distance to determine the the time used during the cheat.
 

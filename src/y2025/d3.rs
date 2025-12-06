@@ -32,7 +32,7 @@ pub fn solve_pt2() -> u64 {
     // let mut sum = 0;
 
     // for mut bank in load_banks() {
-    
+
     // }
     // return sum;
 }

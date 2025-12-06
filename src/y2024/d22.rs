@@ -21,7 +21,7 @@ fn load_input() -> Vec<u64> {
 pub fn solve_pt1() -> u64 {
     let mut res = 0;
     let input = load_input();
-    
+
     for mut num in input {
         for _ in 0..2000 {
             num = next_secret(num);
@@ -33,7 +33,7 @@ pub fn solve_pt1() -> u64 {
 
 pub fn solve_pt2() -> i32 {
     let input = load_input();
-    
+
     let mut prices = Vec::with_capacity(2000);
     let mut changes = Vec::with_capacity(2000);
     let mut sequences = HashMap::new();
@@ -57,12 +57,7 @@ pub fn solve_pt2() -> i32 {
             if price == 0 {
                 continue;
             }
-            let seq = [
-                changes[i - 3],
-                changes[i - 2],
-                changes[i - 1],
-                changes[i],
-            ];
+            let seq = [changes[i - 3], changes[i - 2], changes[i - 1], changes[i]];
             // * The 'monkey' only sells when a sequence first occurs from a buyer.
             if buyer_sequences.insert(seq) {
                 if let Some(total) = sequences.get_mut(&seq) {
@@ -75,4 +70,3 @@ pub fn solve_pt2() -> i32 {
     }
     return sequences.into_values().max().unwrap();
 }
-

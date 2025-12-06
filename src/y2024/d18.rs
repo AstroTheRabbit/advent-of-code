@@ -1,4 +1,7 @@
-use std::{collections::{HashSet, VecDeque}, ops::{Add, Sub}};
+use std::{
+    collections::{HashSet, VecDeque},
+    ops::{Add, Sub},
+};
 
 use crate::include_input;
 
@@ -47,11 +50,21 @@ fn load_bytes() -> Vec<Pos> {
     let mut res = Vec::new();
     for l in INPUT.lines() {
         let mut chars = l.chars();
-        let x = chars.by_ref().take_while(char::is_ascii_digit).collect::<String>().parse().unwrap();
-        let y = chars.by_ref().take_while(char::is_ascii_digit).collect::<String>().parse().unwrap();
+        let x = chars
+            .by_ref()
+            .take_while(char::is_ascii_digit)
+            .collect::<String>()
+            .parse()
+            .unwrap();
+        let y = chars
+            .by_ref()
+            .take_while(char::is_ascii_digit)
+            .collect::<String>()
+            .parse()
+            .unwrap();
         res.push(Pos::new(x, y));
     }
-    return  res;
+    return res;
 }
 
 pub fn solve_pt1() -> u32 {
@@ -67,9 +80,13 @@ pub fn solve_pt1() -> u32 {
     let mut stack = VecDeque::new();
     let mut checked = HashSet::new();
     stack.push_back((Pos::new(0, 0), 0));
-    
+
     while let Some((pos, score)) = stack.pop_front() {
-        if !checked.insert(pos) || space.contains(&pos) || pos.out_of_bounds(&BOUNDS) || score > best_score {
+        if !checked.insert(pos)
+            || space.contains(&pos)
+            || pos.out_of_bounds(&BOUNDS)
+            || score > best_score
+        {
             continue;
         }
         if pos == BOUNDS {
@@ -86,7 +103,7 @@ pub fn solve_pt1() -> u32 {
 }
 
 pub fn solve_pt2() -> String {
-	const BOUNDS: Pos = Pos::new(70, 70);
+    const BOUNDS: Pos = Pos::new(70, 70);
     let bytes = load_bytes();
     let mut space = HashSet::new();
     let mut checked = HashSet::new();

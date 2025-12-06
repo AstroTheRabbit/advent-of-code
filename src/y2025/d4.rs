@@ -1,4 +1,7 @@
-use std::{collections::HashSet, ops::{Add, Sub}};
+use std::{
+    collections::HashSet,
+    ops::{Add, Sub},
+};
 
 use crate::include_input;
 
@@ -85,7 +88,7 @@ pub fn solve_pt1() -> u32 {
 }
 
 pub fn solve_pt2() -> u32 {
-	let mut grid = load_grid();
+    let mut grid = load_grid();
     let mut remove = HashSet::new();
     let mut count = 0;
     loop {
