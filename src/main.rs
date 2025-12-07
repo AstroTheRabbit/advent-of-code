@@ -91,11 +91,13 @@ fn y2025() {
     // println!("  day 2, part 1: {}", y2025::d2::solve_pt1());
     // println!("  day 2, part 2: {}", y2025::d2::solve_pt2());
     // println!("  day 3, part 1: {}", y2025::d3::solve_pt1());
-    // println!("  day 3, part 2: {}", y2025::d3::solve_pt2());
+    // println!("  day 3, part 2: {}", y2025::d3::solve_pt2()); // TODO
     // println!("  day 4, part 1: {}", y2025::d4::solve_pt1());
     // println!("  day 4, part 2: {}", y2025::d4::solve_pt2());
     // println!("  day 5, part 1: {}", y2025::d5::solve_pt1());
     // println!("  day 5, part 2: {}", y2025::d5::solve_pt2());
-    println!("  day 6, part 1: {}", y2025::d6::solve_pt1());
-    println!("  day 6, part 2: {}", y2025::d6::solve_pt2());
+    // println!("  day 6, part 1: {}", y2025::d6::solve_pt1());
+    // println!("  day 6, part 2: {}", y2025::d6::solve_pt2());
+    println!("  day 7, part 1: {}", y2025::d7::solve_pt1());
+    println!("  day 7, part 2: {}", y2025::d7::solve_pt2());
 }
