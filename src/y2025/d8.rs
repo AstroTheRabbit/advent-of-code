@@ -50,11 +50,7 @@ impl Circuits {
         }
     }
 
-    pub fn are_connected(&self, ja: usize, jb: usize) -> bool {
-        return self.connections.contains(&(ja, jb));
-    }
-
-    pub fn are_connected_indirect(&self, ja: usize, jb: usize) -> bool {
+    pub fn same_circuit(&self, ja: usize, jb: usize) -> bool {
         let ma = self.map.get(&ja);
         let mb = self.map.get(&jb);
         if let (Some(ma), Some(mb)) = (ma, mb) {
@@ -143,43 +139,28 @@ fn load_positions() -> Vec<Pos> {
 
 pub fn solve_pt1() -> u64 {
     // * How many connections should we make?
-    const CONNECTION_COUNT: usize = 1000; // 10 for the puzzle's example.
+    // ? 10 for the example input, 1000 for the actual input.
+    const CONNECTION_COUNT: usize = 1000;
     // * How many of the largest circuits should we multiply together to get the solution?
     const LARGEST_COUNT: usize = 3;
 
     let positions = load_positions();
     let len = positions.len();
-
-    // TODO: Pre-sort the positions by distance, then start connecting.
     
+    let mut pairs = Vec::with_capacity(len);
     let mut circuits = Circuits::new(CONNECTION_COUNT);
-
-    for _ in 0..CONNECTION_COUNT {
-        let mut closest_pair = None;
-        let mut closest_dist = u64::MAX;
-
-        for ja in 0..len {
-            for jb in (ja + 1)..len {
-                if circuits.are_connected(ja, jb) {
-                    continue;
-                }
-
-                let pa = positions[ja];
-                let pb = positions[jb];
-                let dist = Pos::dist_squared(pa, pb);
-
-                if dist < closest_dist {
-                    closest_dist = dist;
-                    closest_pair = Some((ja, jb));
-                }
-            }
+    
+    for ja in 0..len {
+        for jb in (ja + 1)..len {
+            pairs.push((ja, jb));
         }
+    }
 
-        if let Some((ja, jb)) = closest_pair {
-            circuits.connect(ja, jb);
-        } else {
-            panic!("Failed to find the closest pair!");
-        }
+    // * Sort the pairs from least distance to most distance.
+    pairs.sort_by_cached_key(|(a, b)| Pos::dist_squared(positions[*a], positions[*b]));
+
+    for (ja, jb) in pairs.into_iter().take(CONNECTION_COUNT) {
+        circuits.connect(ja, jb);
     }
 
     return circuits
@@ -193,39 +174,25 @@ pub fn solve_pt1() -> u64 {
 pub fn solve_pt2() -> u64 {
     let positions = load_positions();
     let len = positions.len();
-
-    // TODO: Pre-sort the positions by distance, then start connecting.
-
+    
+    let mut pairs = Vec::with_capacity(len);
     let mut circuits = Circuits::new(len);
+    
+    for ja in 0..len {
+        for jb in (ja + 1)..len {
+            pairs.push((ja, jb));
+        }
+    }
+
+    // * Sort the pairs from least distance to most distance.
+    pairs.sort_by_cached_key(|(a, b)| Pos::dist_squared(positions[*a], positions[*b]));
+
     let mut last_connection = None;
 
-    loop {
-        let mut closest_pair = None;
-        let mut closest_dist = u64::MAX;
-
-        for ja in 0..len {
-            for jb in (ja + 1)..len {
-                if circuits.are_connected_indirect(ja, jb) {
-                    continue;
-                }
-
-                let pa = positions[ja];
-                let pb = positions[jb];
-                let dist = Pos::dist_squared(pa, pb);
-
-                if dist < closest_dist {
-                    closest_dist = dist;
-                    closest_pair = Some((ja, jb));
-                }
-            }
-        }
-
-        if let Some((ja, jb)) = closest_pair {
+    for (ja, jb) in pairs {
+        if !circuits.same_circuit(ja, jb) {
             circuits.connect(ja, jb);
-            last_connection = closest_pair;
-        } else {
-            // * All the circuits have been connected!
-            break;
+            last_connection = Some((ja, jb));
         }
     }
 
@@ -234,6 +201,6 @@ pub fn solve_pt2() -> u64 {
         let pb = positions[jb];
         return pa.x * pb.x;
     } else {
-        panic!("No connections were made!");
+        unreachable!("No connections were made!");
     }
 }
